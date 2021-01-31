@@ -1,0 +1,51 @@
+<div class="app-component">
+	<h1>Patient Details</h1>
+	<div class="search-input-container">
+		<div>
+			<input type="text" [(ngModel)]="searchText" #name="ngModel"
+			 placeholder="First or Last Name" id="name" name="name" class="form-control" required/>
+			 <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+				<div *ngIf="name.errors.required">
+					Name is required.
+				</div>
+			</div>
+		</div>
+	
+		<div>
+			<input type="date" [(ngModel)]="searchDate" id="date" #date="ngModel"
+			 name="date" class="form-control" required/>
+			<div *ngIf="date.invalid && (date.dirty || date.touched)" class="alert alert-danger">
+				<div *ngIf="date.errors.required">
+					Date is required.
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="search-button-container">
+		<button id="search-button" [disabled]="searched || date.invalid || name.invalid" (click)="searchUser()">Search</button>
+	</div>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Gender</th>
+				<th>DOB</th>
+			</tr>
+			<tr *ngFor="let patient of patientData">
+				<td>{{patient.resource.name && patient.resource.name[0].given[0]}}&nbsp;
+					{{patient.resource.name && patient.resource.name[0].family}}&nbsp;
+					{{patient.resource.name && patient.resource.name[0].suffix}}
+				</td>
+				<td>{{patient.resource.gender}}</td>
+				<td>{{patient.resource.birthDate}}</td>
+			</tr>
+		</thead>
+	</table>
+	<!--<div class="patient-container" *ngFor="let patient of patientData" [innerHTML]="patient.resource.text.div">
+	</div>-->
+
+	<app-questionnaire></app-questionnaire>
+</div>

@@ -1,0 +1,45 @@
+.app-component {
+	padding: 10px;
+	h1 {
+		text-align: center;
+		margin-top: 10px;
+		border-bottom: 2px solid #ccc;
+	}
+	.search-input-container {
+		display: flex;
+		padding: 10px 0;
+		text-align: center;
+		div {
+			flex: 1;
+			input {
+				width: 150px;
+				border: 1px solid #ccc;
+				height: 30px;
+				margin: 0 5px;
+				&.ng-invalid.ng-touched {
+					border: 2px solid red;
+				}
+			}
+		}
+	}
+	.alert.alert-danger {
+		color: red;
+	}
+	.search-button-container {
+		text-align: center;
+		margin: 20px 0;
+	}
+	.patient-container  {
+		border-top: 1px solid #ccc;
+		padding: 10px;
+	}
+	table {
+		width: 100%;
+		border: 1px solid #ccc;
+		border-collapse: collapse;
+		tr,td {
+			border: 1px solid #ccc;
+			padding: 5px;
+		}
+	}
+}

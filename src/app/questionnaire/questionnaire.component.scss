@@ -1,0 +1,43 @@
+.questionnaire-component {
+	border-top: 1px solid #ccc;
+	.form-item {
+		margin: 10px 0;
+		label {
+			width: 200px;
+			display: inline-block;
+		}
+		input {
+			padding: 5px;
+			border: 1px solid #ccc;
+		}
+		input[type="date"] {
+			width: 169px;
+		}
+	}
+	.button-container {
+		text-align: center;
+		button {
+			width: 100px;
+			border: 1px solid #ccc;
+			background-color: transparent;
+			border-radius: 5px;
+			height: 30px;
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.questionnaire-component {
+		.form-item {
+			padding: 10px;
+			label {
+				display:block;
+				width: 100%;
+			}
+			input, input[type="date"] {
+				width: 100%;
+				box-sizing: border-box;
+			}
+		}
+	}
+}
