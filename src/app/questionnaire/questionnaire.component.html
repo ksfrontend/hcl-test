@@ -1,19 +1,49 @@
 <div class="questionnaire-component" *ngIf="questionnaireData.item && questionnaireData.item.length>0">
-	<div *ngFor="let item of questionnaireData.item">
+	<div *ngFor="let item of questionnaireData.item" class="form-data">
 		<div *ngIf="item.type === 'group'">
 			<div *ngFor="let groupItem of item.item">
-				<div class="form-item">
+				<div class="questionnaire-item">
 					<label>{{groupItem.text}}</label>
-					<input [(ngModel)]="groupItem.value" [type]="groupItem.type === 'boolean' ? 'checkbox' : groupItem.type" name="">
+					<input *ngIf="groupItem.type !== 'dropDown' && groupItem.type === 'boolean'" type="checkbox" [checked]="groupItem.value">
+					<input *ngIf="groupItem.type !== 'dropDown' && groupItem.type !== 'boolean'" [(ngModel)]="groupItem.value" [type]="getInputType(groupItem.type)" name="">
+					<select [(ngModel)]="groupItem.value" *ngIf="groupItem.type === 'dropDown'">
+						<option *ngFor="let values of groupItem.values" [ngValue]="values">
+							{{values}}
+						</option>
+					</select>
 				</div>
 			</div>
 		</div>
-		<div class="form-item" *ngIf="item.type !== 'group'">
-			<label>{{item.text}}</label>
-			<input [(ngModel)]="item.value" [type]="item.type === 'boolean' ? 'checkbox' : item.type" name="">
+		<div class="questionnaire-item" *ngIf="item.type !== 'group'">
+			<label>{{item.text}} {{item.type}}</label>
+			<input *ngIf="item.type !== 'dropDown' && item.type === 'boolean'" type="checkbox" [(ngModel)]="item.value" [checked]="item.value"/>
+			<input *ngIf="item.type !== 'dropDown' && item.type !== 'boolean'" [(ngModel)]="item.value" [type]="getInputType(item.type)" />
+			<select [(ngModel)]="item.value" *ngIf="item.type === 'dropDown'">
+				<option *ngFor="let values of item.values" [ngValue]="values">
+					{{values}}
+				</option>
+			</select>
 		</div>
 	</div>
 	<div class="button-container">
 		<button (click)="saveForm()">Save</button>
 	</div>
+
+	<div *ngIf="saved" class="form-display">
+		<div *ngFor="let item of questionnaireData.item">
+			<div *ngIf="item.type === 'group'">
+				<div *ngFor="let groupItem of item.item">
+					<div class="questionnaire-item">
+						<label>{{groupItem.text}}</label>
+						<span>{{groupItem.value}}</span>
+					</div>
+				</div>
+			</div>
+			<div class="questionnaire-item" *ngIf="item.type !== 'group'">
+				<label>{{item.text}}</label>
+				<span>{{item.value}}</span>
+			</div>
+		</div>
+	</div>
+	
 </div>

@@ -1,17 +1,24 @@
 .questionnaire-component {
 	border-top: 1px solid #ccc;
-	.form-item {
-		margin: 10px 0;
-		label {
-			width: 200px;
-			display: inline-block;
-		}
-		input {
-			padding: 5px;
-			border: 1px solid #ccc;
-		}
-		input[type="date"] {
-			width: 169px;
+	.form-data {
+		.questionnaire-item {
+			margin: 10px 0;
+			label {
+				width: 200px;
+				display: inline-block;
+			}
+			input {
+				padding: 5px;
+				border: 1px solid #ccc;
+			}
+			input[type="date"], input[type="text"] {
+				width: 170px;
+			}
+			select {
+				width: 182px;
+				padding: 5px;
+				border: 1px solid #ccc;
+			}
 		}
 	}
 	.button-container {
@@ -24,20 +31,43 @@
 			height: 30px;
 		}
 	}
+	.form-display {
+		border: 1px solid #ccc;
+		margin-top: 10px;
+		width: 50%;
+		.questionnaire-item {
+			border-bottom: 1px solid #ccc;
+			padding: 10px;
+			label {
+				width: 250px;
+				display: inline-block;
+			}
+			span {
+				width: calc(100% - 250px);
+				display: inline-block;
+				text-align: right;
+			}
+		}
+	}
 }
 
 @media screen and (max-width: 768px) {
 	.questionnaire-component {
-		.form-item {
-			padding: 10px;
-			label {
-				display:block;
-				width: 100%;
+		.form-data {
+			.questionnaire-item {
+				padding: 10px;
+				label {
+					display:block;
+					width: 100%;
+				}
+				input[type="date"], input[type="text"], select {
+					width: 100%;
+					box-sizing: border-box;
+				}
 			}
-			input, input[type="date"] {
-				width: 100%;
-				box-sizing: border-box;
-			}
+		}
+		.form-display {
+			width: 100%;
 		}
 	}
 }

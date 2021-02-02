@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.apiService.getPatients().subscribe(
       (data:any) => {
-        console.log(data);
         this.patientData = data && data.entry;
         this.patientData.sort(function (left, right) {
           return moment.utc(left.resource.birthDate).diff(moment.utc(right.resource.birthDate))
@@ -37,7 +36,6 @@ export class AppComponent implements OnInit {
     const newDate = new Date(this.searchDate);
     this.apiService.getFilteredPatients(this.searchText, newDate.getFullYear()).subscribe((response: any) => {
       this.patientData = response && response.entry
-      console.log('getFilteredPatients ', response);
       this.searched = false;
     },
     error => {

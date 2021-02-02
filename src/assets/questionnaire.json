@@ -21,7 +21,8 @@
         {
           "linkId": "2.1",
           "text": "What is your gender?",
-          "type": "string"
+          "type": "dropDown",
+          "values": ["Male", "Female", "Transgender"]
         },
         {
           "linkId": "2.2",
@@ -31,12 +32,13 @@
         {
           "linkId": "2.3",
           "text": "What is your country of birth?",
-          "type": "string"
+          "type": "text"
         },
         {
           "linkId": "2.4",
           "text": "What is your marital status?",
-          "type": "string"
+          "type": "dropDown",
+          "values": ["Married", "Single",  "Divorced", "Separated", "Widowed"]
         }
       ]
     },
