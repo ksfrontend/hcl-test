@@ -1,6 +1,8 @@
 .questionnaire-component {
 	border-top: 1px solid #ccc;
 	.form-data {
+		width: 50%;
+		margin-left: 25%;
 		.questionnaire-item {
 			margin: 10px 0;
 			label {
@@ -35,6 +37,7 @@
 		border: 1px solid #ccc;
 		margin-top: 10px;
 		width: 50%;
+		margin-left: 25%;
 		.questionnaire-item {
 			border-bottom: 1px solid #ccc;
 			padding: 10px;
@@ -54,6 +57,8 @@
 @media screen and (max-width: 768px) {
 	.questionnaire-component {
 		.form-data {
+			width: 100%;
+			margin-left: 0;
 			.questionnaire-item {
 				padding: 10px;
 				label {
@@ -68,6 +73,7 @@
 		}
 		.form-display {
 			width: 100%;
+			margin-left: 0;
 		}
 	}
 }

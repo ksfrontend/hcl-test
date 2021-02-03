@@ -10,7 +10,7 @@ export class QuestionnaireComponent implements OnInit {
 
 	constructor(private apiService: ApiService) { }
 
-	saved = true;
+	saved = false;
 	questionnaireData= {
 		'item': []
 	};
@@ -32,12 +32,12 @@ export class QuestionnaireComponent implements OnInit {
 		data.item.map(item => {
 			if (item.type === 'group') {
 				var groupItems = item.item.map(groupItem => {
-					groupItem.value = groupItem.type === 'boolean' ? true : "";
+					groupItem.value = groupItem.type === 'boolean' ? false : "";
 					return groupItem;
 				});
 				return groupItems;
 			} else {
-				item.value = item.type === 'boolean' ? true : "";
+				item.value = item.type === 'boolean' ? false : "";
 				return item;
 			}
 		});
@@ -54,15 +54,11 @@ export class QuestionnaireComponent implements OnInit {
 			if (item.type === 'group') {
 				var groupItems = item.item.map(groupItem => {
 					groupItem.answer = [{'valueString': groupItem.value}];
-					delete groupItem.value;
-					delete groupItem.values;
 					return groupItem;
 				});
 				return groupItems;
 			} else {
 				item.answer = [{'valueString': item.value}];
-				delete item.value;
-				delete item.values;
 				return item;
 			}
 		})
